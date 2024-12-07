@@ -1,0 +1,32 @@
+<h3>ДОБАВЛЕНИЕ НОВОЙ КНИГИ</h3>
+
+<%= form_for @book, url: books_path do |f| %>
+
+    <% if @book.errors.any? %> <!-- определяем ошибку -->
+        <%= @book.errors.full_messages.map do |er| %> <!-- выписываем все ошибки поочерёдно -->
+            <div class=""><%= er %></div>
+        <% end.join.html_safe %> <!-- либо % end; nil% с заменой метода @book.errors.full_message.map на @book.errors.full_message.each -->
+    <% end %>
+
+<p>
+    НАЗВАНИЕ<br>
+    <%= f.text_field(:title, {:class => ""}) %>
+</p>
+
+<p>
+    АВТОР<br>
+    <%= f.text_field(:author, {:class => ""}) %>
+</p>
+
+<p>
+    ЖАНР<br>
+    <%= f.text_field(:genre, {:class => ""}) %>
+</p>
+
+<p>
+    <%= f.submit "Добавить книгу", {:class => ""}%>
+</p>
+
+<% end %>
+
+<%= button_to "Вернуться к списку", main_index_path, method: :get, class: ""%>

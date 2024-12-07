@@ -1,0 +1,32 @@
+<h1 class = ""><%= @book.title %></h1>
+<p class = ""><%= @book.author %></p>
+<p class = ""><%= @book.genre %></p>
+
+<%= button_to "Редактировать", edit_book_path(@book), method: :get, class: ""%>
+<%= button_to "Удалить", book_path(@book), method: :delete, data: {confirm: "Вы уверены?"}, class: "" %> <!-- data запускает всплывающие окно, class для CSS что бы редактрировать дизайн-->
+<%= button_to "Вернуться к списку", main_index_path, method: :get, class: "" %> <!-- books_path доступ ко всем книгам сразу, book_path доступ к 1 опрделёной книге -->
+<!-- 
+Хелпер	    URL	        Использование
+books_path	/books	    Работа с коллекцией (список книг, создание новой).
+book_path	/books/:id	Работа с конкретной книгой (просмотр, редактирование, удаление).
+-->
+
+<%= form_for([@book, @book.comments.build]) do |f| %>
+<p>
+    <%= f.text_area(:body, {:class => ""}) %>
+</p>
+<p>
+    <%= f.submit "Добавить", {:class => ""}%>
+</p>
+
+<% end %>
+
+<h1 class = "">Комментарии</h1>
+
+<hr>
+    <% @book.comments.each do |comment| %>
+    <li>
+      <div><%= comment.body %></div>
+    </li>
+  <% end %>
+<hr>

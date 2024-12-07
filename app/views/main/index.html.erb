@@ -1,0 +1,9 @@
+<h1>Список книг</h1>
+<%= link_to "Добавить книгу", new_book_path, class: ""%>
+<ul>
+  <% @books.each do |book| %>
+    <li>
+      <%= link_to book.title, book_path(book), class: ""%> - <span class = ""><%= book.author%></span>
+    </li>
+  <% end %>
+</ul>

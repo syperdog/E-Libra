@@ -1,0 +1,24 @@
+<%= form_for @book, url: book_path(@book)  do |f| %>
+
+<p>
+    НАЗВАНИЕ<br>
+    <%= f.text_field(:title, {:class => ""}) %>
+</p>
+
+<p>
+    АВТОР<br>
+    <%= f.text_field(:author, {:class => ""}) %>
+</p>
+
+<p>
+    ЖАНР<br>
+    <%= f.text_field(:genre, {:class => ""}) %>
+</p>
+
+<p>
+    <%= f.submit "Сохранить изменения"%>
+</p>
+
+<% end %>
+
+<%= button_to "Отмена", book_path(@book), method: :get, class: ""%>
